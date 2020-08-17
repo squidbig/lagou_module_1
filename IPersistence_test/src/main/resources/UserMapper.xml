@@ -1,0 +1,30 @@
+<mapper namespace="com.foton.dao.IUserDao">
+
+    <!--sql的唯一标识：namespace.id来组成 ： statementId-->
+    <select id="selectAll" resultType="com.foton.pojo.User" >
+        select * from user
+    </select>
+
+    <!--
+        User user = new User()
+        user.setId(1);
+        user.setUsername("zhangsan")
+    -->
+    <select id="selectByCondition" resultType="com.foton.pojo.User" paramterType="com.foton.pojo.User">
+        select * from user where u_id = #{u_id} and username = #{username}
+    </select>
+    
+    <insert id="insertItem"  paramterType="com.foton.pojo.User">
+        insert into user (u_id,username) values (#{u_id},#{username})
+    </insert>
+    
+    <update id="updateItem"  paramterType="com.foton.pojo.User">
+        update user set username=#{username} where  u_id = #{u_id}
+    </update>
+    
+    <delete id="deleteItem"  paramterType="com.foton.pojo.User">
+        delete from user where u_id = #{u_id} and username=#{username}
+    </delete>
+
+
+</mapper>
